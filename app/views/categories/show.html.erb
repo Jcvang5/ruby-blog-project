@@ -1,0 +1,20 @@
+<h1><%= @category.name %></h1>
+<p><%= @category.description %></p>
+
+<h2>Articles in this category:</h2>
+<% if @articles %>
+  <% if @articles.any? %>
+    <ul>
+      <% @articles.each do |article| %>
+        <li>
+          <%= link_to article.title, article %>
+          <!-- Display other article information as needed -->
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No articles in this category.</p>
+  <% end %>
+<% else %>
+  <p>Error: Unable to retrieve articles for this category.</p>
+<% end %>

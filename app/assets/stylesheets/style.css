@@ -1,0 +1,17 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #bfefff;; /* Set the background color */
+  }
+  
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* Add a background color to the container for a clean look */
+  }
+  
+  /* Add more styles as needed */
+  

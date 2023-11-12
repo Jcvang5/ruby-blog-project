@@ -3,5 +3,9 @@
 class Category < ApplicationRecord
   has_many :articles
 
-  validates :name, uniqueness: true
+  validates :name, presence: true, uniqueness: true
+
+  def article_count
+    articles.count
+  end
 end

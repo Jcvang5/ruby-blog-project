@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'articles#index'
+  # root 'articles#index'
+  get 'up' => 'rails/health#show', as: :rails_health_check
 
-  resources :articles do
-    resources :comments
-
-    resources :categories do
-      resources :articles
+  root 'categories#index'
+  resources :categories do
+    resources :articles do
+      resources :comments
     end
   end
 end
