@@ -1,9 +1,10 @@
 <h1>Categories</h1>
 <ul>
   <% @categories.each do |category| %>
-    <li>
-      <%= link_to category.name, category %>
-      (<%= category.article_count %> articles)
-    </li>
+    <li class = "container"><strong><%= link_to category.name, category_articles_path(category) %></strong>:
+    <% count = category.articles.count %>
+    <%= "#{count} #{count == 1 ? 'article' : 'articles'}" %>
+    <br> <em> <%= category.description %> </em></li>
   <% end %>
 </ul>
+<%= link_to "New Category", new_category_path(@category) %>
