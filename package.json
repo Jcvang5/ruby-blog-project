@@ -1,0 +1,14 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Jcvang5/ruby-project.git",
+  "license": "MIT",
+  "description": "blog app",
+  "dependencies": {
+    "jquery": "^3.7.1"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.27"
+  }
+}

@@ -1,0 +1,25 @@
+body {
+    font-family: 'Arial', sans-serif;
+    color: green;
+    line-height: 1.6;
+    color: #333;
+    background-image: url('https://www.publicdomainpictures.net/pictures/530000/t2/businessman-and-falling-money-1693314002MsR.jpg');
+}
+h1 {
+    color: white;
+}
+li {
+    color:white;
+    font-style: italic;
+    font-size: 30px
+  }
+  
+.field {
+    color: white;
+  }
+  
+.btn{
+    background-color:green;
+    color:white;
+  }
+  

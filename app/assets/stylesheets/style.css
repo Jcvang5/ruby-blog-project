@@ -3,15 +3,21 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #bfefff;; /* Set the background color */
+    background-image: url('https://www.publicdomainpictures.net/pictures/220000/velka/jetty-in-calm-waters-1493549775toN.jpg'); 
+
   }
-  
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #bfefff; /* Add a background color to the container for a clean look */
-  }
-  
-  /* Add more styles as needed */
-  
+
+li {
+  color:green;
+  font-style: italic;
+  font-size: 30px
+}
+
+.field {
+  color: blue;
+}
+
+.btn{
+  background-color:green;
+  color:white;
+}
