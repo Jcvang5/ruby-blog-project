@@ -15,8 +15,11 @@
   } %></li>
 </ul>
 
+<div class="comment-section">
 <h2>Comments</h2>
 <%= render @article.comments %>
+<button id="load-comments">Load Comments</button>
 
 <h2>Add a comment:</h2>
 <%= render 'comments/form' %>
+</div>

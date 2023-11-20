@@ -3,26 +3,22 @@
 class CommentsController < ApplicationController
   http_basic_authenticate_with name: 'dhh', password: 'secret', only: :destroy
 
-  def create
-    @article = Article.find(params[:article_id])
-    # ...
+  def index
+    @comments = Comment.where(article_id: params[:article_id])
+    render json: @comments
   end
 
   def create
     @category = Category.find(params[:category_id])
     @article = Article.find(params[:article_id])
-
     @comment = @article.comments.create(comment_params)
-
     redirect_to category_article_path(@category, @article)
   end
 
   def destroy
     @category = Category.find(params[:category_id])
     @article = Article.find(params[:article_id])
-
     @comment = @article.comments.find(params[:id])
-
     @comment.destroy
     redirect_to category_article_path(@category, @article), status: :see_other
   end
