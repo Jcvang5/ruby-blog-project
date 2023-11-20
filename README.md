@@ -28,4 +28,4 @@ To run the Blog App locally, follow these steps:
      
    - *Step 2:* Backfill existing categories with descriptions. Run the Rake task using the following terminal command inside your blog directory:
      
-     rake db:add_descriptions
+     rake db:add_description_categories
