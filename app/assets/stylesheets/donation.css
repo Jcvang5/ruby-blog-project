@@ -3,11 +3,15 @@ body {
     line-height: 1.6;
     color: #333;
     background-image: url('https://www.publicdomainpictures.net/pictures/530000/t2/businessman-and-falling-money-1693314002MsR.jpg');
-    margin: 0; /* Remove default body margin */
+    margin: 0; 
+
 }
 
 h1 {
     color: white;
+    margin-left: 800px;
+    margin-top: 100px;
+    
 }
 
 li {
@@ -21,20 +25,14 @@ li {
 }
 
 #donation-form {
-    background-color: #c07878;
+    background-color: #a32222;
     border: 1px solid #ccc;
     padding: 20px;
     margin: 10px;
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    box-sizing: border-box;
+    width: 500px;
 }
 
 .btn {
@@ -44,9 +42,13 @@ input {
     text-decoration: none;
     display: inline-block;
     border-radius: 5px;
-    cursor: pointer; /* Change cursor to pointer on hoverable element */
+    cursor: pointer; 
+    margin-left: 30px;
 }
 
 .btn:hover {
-    background-color: darkgreen; /* Change the background color on hover */
+    background-color: darkgreen; 
+}
+#card-container {
+    color:aliceblue;
 }
