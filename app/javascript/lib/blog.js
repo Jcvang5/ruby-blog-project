@@ -1,8 +1,7 @@
 $(function() {
     // alert('jQuery is working!');
     $('#comment-body').on('input', function(){
-        console.log (gkdkgnlngkr)
-        const value =$(this).value().trim();
+        const value =$(this).val().trim();
         const submitButton =$(this).closest('form').find('input[type="submit"]')
 
         if(value === ''){
@@ -14,10 +13,28 @@ $(function() {
         }
     });
     $('#load-comments').on('click',function(){
-        const url = '/categories/1/articles/1/comments';
+        const categoryId = $('#category-id').data('category');
+        const articleId = $('#load-comments').data('article');
+
+        const url = `/categories/${categoryId}/articles/${articleId}/comments`;
         console.log($.getJSON(url));
-        $.getJSON(url, function(data){
-            console.log(data);
-    })
-    })
+        
+        $.getJSON(url)
+        .done(function(data) {
+            const commentsContainer = $('#comments');
+            data.forEach(function(comment) {
+                commentsContainer.append('<div class="comment">' + comment.text + '</div>');
+            });
+        })
+        .fail(function() {
+            alert('Error loading comments. Please try again later.');
+        });
+});
+$('#like-button').on('click', function() {
+    $(this).toggleClass('liked');
+    let likeCount = parseInt($(this).data('likes')) || 0;
+    likeCount += $(this).hasClass('liked') ? 1 : -1;
+    $(this).data('likes', likeCount);
+    $(this).find('.like-count').text(likeCount);
+});
 });
