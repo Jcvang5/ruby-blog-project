@@ -7,8 +7,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.1]
       t.string :last_name, null: false
       t.string :username, null: false
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string :email,              null: false, default: ''
+      t.string :encrypted_password, null: false, default: ''
 
       ## Recoverable
       t.string   :reset_password_token
@@ -17,7 +17,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.1]
       ## Rememberable
       t.datetime :remember_created_at
 
-      #stripe customer_id
+      # stripe customer_id
       t.string :external_user_id
 
       t.timestamps null: false

@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
-
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :set_category
+  before_action :set_article, only: %i[show edit update destroy]
   def index
     @articles = Article.all
   end
-
-  before_action :set_category
-  before_action :set_article, only: %i[show edit update destroy]
 
   def index
     @articles = @category.articles
