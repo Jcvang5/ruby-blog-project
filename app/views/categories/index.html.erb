@@ -1,7 +1,9 @@
 <head> <%= stylesheet_link_tag 'style' %>
 </head>
-
-<h1>Categories</h1>
+<% if user_signed_in?%>
+  <div> 👋🏻 
+    Welcome, <%= current_user.username%>! </div>
+  <%=button_to "Sign out", destroy_user_session_path, method: :delete%>
 <ul>
   <% @categories.each do |category| %>
     <li class = "container"><strong><%= link_to category.name, category_path(category) %></strong>:
@@ -11,3 +13,14 @@
   <% end %>
 </ul>
 <%= link_to "New Category", new_category_path(@category) %>
+<% else %>
+  <%= button_to "Sign in", new_user_session_path%>
+  <ul>
+  <% @categories.each do |category| %>
+    <li class = "container"><strong><%= link_to category.name, category_path(category) %></strong>:
+    <% count = category.article_count %>
+    <%= "#{count} #{count == 1 ? 'article' : 'articles'}" %>
+    <br> <em> <%= category.description %> </em></li>
+  <% end %>
+</ul>
+<% end %>

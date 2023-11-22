@@ -19,16 +19,19 @@ $(function() {
         const url = `/categories/${categoryId}/articles/${articleId}/comments`;
         console.log($.getJSON(url));
         
+        $('#comment-section').empty();
+
         $.getJSON(url)
-        .done(function(data) {
-            const commentsContainer = $('#comments');
-            data.forEach(function(comment) {
-                commentsContainer.append('<div class="comment">' + comment.text + '</div>');
+            .done(function(data) {
+                const commentsContainer = $('#comment-section');
+                data.forEach(function(comments) {
+                    commentsContainer.append('<div class="comment-section">' + comments.body + '</div>');
+                });
+            })
+            .fail(function(error) {
+                alert('Error loading comments. Please try again later.');
             });
-        })
-        .fail(function() {
-            alert('Error loading comments. Please try again later.');
-        });
+    });
 });
 $('#like-button').on('click', function() {
     $(this).toggleClass('liked');
@@ -36,5 +39,4 @@ $('#like-button').on('click', function() {
     likeCount += $(this).hasClass('liked') ? 1 : -1;
     $(this).data('likes', likeCount);
     $(this).find('.like-count').text(likeCount);
-});
 });
