@@ -9,4 +9,8 @@ class Article < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true, length: { minimum: 10 }
   validates :category, presence: true
+
+  def self.last_five
+    all.last(5)
+  end 
 end

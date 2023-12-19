@@ -1,29 +1,19 @@
-<head>
-  <%= stylesheet_link_tag 'style' %>
-</head>
+<div class= "articleContent"  style="border: gray solid 2px ">
 
-<h1><%= @article.title %></h1>
+  <p><%= @article.body %></p>
+  <p><strong>Category:</strong> <%= @article.category.name %></p>
 
-<p><%= @article.body %></p>
-
-<p><strong>Category:</strong> <%= @article.category.name %></p>
-
-<ul>
-  <li><%= link_to "Edit", edit_category_article_path(@category, @article) %></li>
-  <li><%= link_to "Delete", category_article_path(@category), data: {
-    turbo_method: :delete,
-    turbo_confirm: "Are you sure?"
-  } %></li>
-</ul>
-
-<div class="comment-section">
-  <h2>Comments</h2>
-  <div id="category-id" data-category="<%= @category.id %>"></div>
-
-  
-  
-  <button id="load-comments" data-article="<%= @article.id %>">Load Comments</button>
-
-  <h2>Add a comment:</h2>
-  <%= render 'comments/form' %>
+  <ul>
+    <li><%= link_to "Edit", edit_category_article_path(@category, @article) %></li>
+    <li><%= link_to "Delete", category_article_path(@category), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+    } %></li>
+  </ul>
 </div>
+
+<button class= "toggleContent" style="background-color: #4CAF50; border: none;color: white;
+padding: 10px 32px;
+border-radius: 5px;
+font-size: 16px;
+margin: 4px 2px;">Toggle Article Info</button>

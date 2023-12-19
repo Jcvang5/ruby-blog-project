@@ -7,4 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   validates :first_name, :last_name, :username, presence: true
+
+  def user_comments
+    comments
+  end
 end
