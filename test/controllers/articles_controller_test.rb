@@ -3,22 +3,59 @@
 require 'test_helper'
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
-  describe 'DELETE #destroy' do
-  let(:category) { create(:category) }
-  let(:article) { create(:article, category: category) }
+  include Devise::Test::IntegrationHelpers
 
-  it 'destroys the requested article' do
-    expect {
-      delete :destroy, params: { category_id: category.id, id: article.id }
-    }.to change(Article, :count).by(-1)
+  setup do
+    @user = users(:one)
+    @category = categories(:one)
+    @article = articles(:one)
   end
 
-  it 'redirects to the root path' do
-    delete :destroy, params: { category_id: category.id, id: article.id }
-    expect(response).to redirect_to(root_path)
+  test "should get index" do
+    get category_articles_url(@category)
+    assert_response :success
   end
-end
+
+  test "should show article" do
+    get category_article_url(@category, @article)
+    assert_response :success
+  end
+
+  test "should get new" do
+    sign_in @user
+    get new_category_article_url(@category)
+    assert_response :success
+  end
+
+  test "should create article" do
+    sign_in @user
+    assert_difference('Article.count') do
+      post category_articles_url(@category), params: { article: { title: "New Article", body: "Lorem ipsum", status: "public" } }
+    end
+
+    assert_redirected_to category_article_url(@category, Article.last)
+  end
+
+  test "should get edit" do
+    sign_in @user
+    get edit_category_article_url(@category, @article)
+    assert_response :success
+  end
+
+  test "should update article" do
+    sign_in @user
+    patch category_article_url(@category, @article), params: { article: { title: "Updated Title" } }
+    assert_redirected_to category_article_url(@category, @article)
+    @article.reload
+    assert_equal "Updated Title", @article.title
+  end
+
+  test "should destroy article" do
+    sign_in @user
+    assert_difference('Article.count', -1) do
+      delete category_article_url(@category, @article)
+    end
+
+    assert_redirected_to category_articles_url(@category)
+  end
 end

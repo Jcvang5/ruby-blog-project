@@ -3,21 +3,56 @@
 require 'test_helper'
 
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
-  describe 'DELETE #destroy' do
-    it 'destroys the requested category' do
-      category = Category.create(valid_attributes)
-      expect {
-        delete :destroy, params: { id: category.to_param }
-      }.to change(Category, :count).by(-1)
+  setup do
+    @user = users(:one)
+    @category = categories(:one)
+  end
+
+  test "should get index" do
+    get category_url(@category)
+    assert_response :success
+  end
+
+  test "should show category" do
+    get category_url(@category)
+    assert_response :success
+  end
+
+  test "should get new" do
+    sign_in @user
+    get new_category_url(@category)
+    assert_response :success
+  end
+
+  test "should create category" do
+    sign_in @user
+    assert_difference('Article.count') do
+      post category_articles_url(@category), params: { category: { name: "New Category"} }
     end
 
-    it 'redirects to the root path' do
-      category = Category.create(valid_attributes)
-      delete :destroy, params: { id: category.to_param }
-      expect(response).to redirect_to(root_path)
+    assert_redirected_to category_url(@category, Category.last)
+  end
+
+  test "should get edit" do
+    sign_in @user
+    get edit_category_url(@category)
+    assert_response :success
+  end
+
+  test "should update category" do
+    sign_in @user
+    patch category_article_url(@category), params: { category: { name: "Updated Title" } }
+    assert_redirected_to category_article_url(@category)
+    @category.reload
+    assert_equal "Updated category", @category.title
+  end
+
+  test "should destroy category" do
+    sign_in @user
+    assert_difference do
+      delete category_url(@category)
     end
+
+    assert_redirected_to category_url(@category)
   end
 end

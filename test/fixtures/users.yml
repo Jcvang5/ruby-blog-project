@@ -7,5 +7,9 @@
 one: {}
 # column: value
 #
+first_name: John
+last_name: Doe
+username: johndoe
+email: john.doe@example.com
 two: {}
 # column: value

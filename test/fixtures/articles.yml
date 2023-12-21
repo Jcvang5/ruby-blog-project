@@ -1,9 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  body: MyText
+  title: Exciting Article
+  body: This is a very interesting article.
+  status: public
+  category: categories(:one)
 
 two:
   title: MyString
   body: MyText
+
+article_without_user:
+  title: "Sample Article"
+  body: "testing sample 123"
